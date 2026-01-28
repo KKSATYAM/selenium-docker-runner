@@ -35,7 +35,7 @@ services:
     deploy:
       replicas: 1
   vendor-portal:
-    image: keshrsa/selenium-docker
+    image: keshrsa/selenium-docker:v1
     depends_on:
     - hub
     - firefox
@@ -47,7 +47,7 @@ services:
     volumes:
     - /mnt/d/Selenium-Docker/results/vendor-portal/:/home/selenium-docker/test-output
   flight-reservation:
-    image: keshrsa/selenium-docker
+    image: keshrsa/selenium-docker:v1
     depends_on:
     - hub
     - chrome
