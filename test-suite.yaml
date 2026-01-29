@@ -1,0 +1,19 @@
+services:
+  vendor-portal:
+    image: keshrsa/selenium-docker
+    environment:
+    - BROWSER=firefox
+    - HUB_HOST=hub
+    - THREAD_COUNT=4
+    - TEST_SUITE=vendor-portal.xml
+    volumes:
+    - /mnt/d/Selenium-Docker/results/vendor-portal/:/home/selenium-docker/test-output
+  flight-reservation:
+    image: keshrsa/selenium-docker
+    environment:
+    - BROWSER=chrome
+    - HUB_HOST=hub
+    - THREAD_COUNT=4
+    - TEST_SUITE=flight-reservation.xml
+    volumes:
+    - /mnt/d/Selenium-Docker/results/flight-reservation/:/home/selenium-docker/test-output
