@@ -51,8 +51,7 @@ always{
 sh "docker-compose -f test-suite.yaml down --remove-orphans"
 sh "docker-compose -f grid.yaml down --remove-orphans"
 sh "docker image rm keshrsa/selenium-docker-via-git"
-archiveArtifacts artifacts: '/output/flight-reservation/emailable-report.html', followSymlinks: false
-archiveArtifacts artifacts: '/output/vendor-portal/emailable-report.html', followSymlinks: false
+sh "pwd"
 
 
 }
