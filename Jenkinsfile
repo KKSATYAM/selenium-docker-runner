@@ -27,7 +27,7 @@ sh "docker-compose -f test-suite.yaml up"
 
 script{
 
-	if(fileExists('output/flight-reservation/testng-failed.xml') || fileExists('output/vendor-portal/testng-failed.xml')){
+	if(fileExists('/output/flight-reservation/testng-failed.xml') || fileExists('/output/vendor-portal/testng-failed.xml')){
                         error('failed tests found')
 
 }
@@ -51,8 +51,8 @@ always{
 sh "docker-compose -f test-suite.yaml down --remove-orphans"
 sh "docker-compose -f grid.yaml down --remove-orphans"
 sh "docker image rm keshrsa/selenium-docker-via-git"
-archiveArtifacts artifacts: 'output/flight-reservation/emailable-report.html', followSymlinks: false
-archiveArtifacts artifacts: 'output/vendor-portal/emailable-report.html', followSymlinks: false
+archiveArtifacts artifacts: '/output/flight-reservation/emailable-report.html', followSymlinks: false
+archiveArtifacts artifacts: '/output/vendor-portal/emailable-report.html', followSymlinks: false
 
 
 }
