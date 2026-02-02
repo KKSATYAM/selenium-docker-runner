@@ -13,7 +13,7 @@ stage('Start Grid'){
 
 steps{
 
-sh "docker-compose -f grid.yaml up --scale ${params.BROWSER}=1 -d"
+sh "docker-compose -p ${env.BUILD_NUMBER} -f grid.yaml up --scale ${params.BROWSER}=1 -d"
 
 }
 
@@ -23,7 +23,7 @@ stage('Run Test'){
 
 steps{
 
-sh "docker-compose -f test-suite.yaml up --pull=always"
+sh "docker-compose -p ${env.BUILD_NUMBER} -f test-suite.yaml up --pull=always"
 
 script{
 
@@ -48,8 +48,8 @@ post{
 
 always{
 
-sh "docker-compose -f test-suite.yaml down --remove-orphans"
-sh "docker-compose -f grid.yaml down --remove-orphans"
+sh "docker-compose -p ${env.BUILD_NUMBER} -f test-suite.yaml down --remove-orphans"
+sh "docker-compose -p ${env.BUILD_NUMBER} -f grid.yaml down --remove-orphans"
 archiveArtifacts artifacts: 'output/flight-reservation/emailable-report.html', followSymlinks: false
 archiveArtifacts artifacts: 'output/vendor-portal/emailable-report.html', followSymlinks: false
 
